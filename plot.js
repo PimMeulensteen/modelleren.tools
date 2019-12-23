@@ -1,7 +1,7 @@
 class Plot {
     constructor() {
-        this.outputElement = document.getElementById("output");
-        this.settingsElement = document.getElementById('graph_settings');
+        this.outputElement = document.getElementById("output")
+        this.settingsElement = document.getElementById('graph_settings')
     }
 
     /**
@@ -25,7 +25,7 @@ class Plot {
             }
             this.graphs.push(temp_graph)
 
-            //For each graph, make a div element
+            /* For each graph, make a div element with id graph{NUMBER} */
             let graphElement = document.createElement('div')
             graphElement.id = `graph${x}`
             graphElement.classList = "graph"
@@ -34,7 +34,6 @@ class Plot {
     }
 
     show(x, data, yname, graphHeight, graphWidth) {
-
         let layout = {
             title: `(${yname.slice(0, -2)},${this.graphs[x][0]})-grafiek`,
             titlefont: {
@@ -51,6 +50,7 @@ class Plot {
                 title: yname.slice(0, -2)
             }
         }
+
         Plotly.newPlot(`graph${x}`, data, layout, {
             scrollZoom: true,
             editable: true,
@@ -60,27 +60,28 @@ class Plot {
     }
 
     plot(modelData) {
-        //For each graph
         for (let x = 0; x < this.graphs.length; x++) {
+        // for (let graph in this.graphs) {
+            let graph = this.graphs[x]
             //Temp value to add all the lines within one graph to.
             let data = []
             let yname = ''
             //For each variable minus one (the x variable stays the same)
-            for (let y = 1; y < this.graphs[x].length; y++) {
+            for (let y = 1; y < graph.length; y++) {
                 //Make a line (x,y1), (x,y2), etc.. with name y1,y2,y3 etc....
                 data.push({
-                    x: modelData[this.graphs[x][0]],
-                    y: modelData[this.graphs[x][y]],
+                    x: modelData[graph[0]],
+                    y: modelData[graph[y]],
                     type: `scatter`,
-                    name: this.graphs[x][y],
+                    name: graph[y],
                     autosize: true
                 })
-                yname += this.graphs[x][y] + ', '
+                yname += graph[y] + ', '
             }
 
-            let width_of_window = window.innerWidth;
-            let graphWidth = width_of_window > (BREAKPOINT) ? width_of_window - 700 : width_of_window - 48;
-            let graphHeight = graphWidth / 1.5;
+            let width_of_window = window.innerWidth
+            let graphWidth = width_of_window > (BREAKPOINT) ? width_of_window - 700 : width_of_window - 48
+            let graphHeight = graphWidth / 1.5
 
             this.show(x, data, yname, graphHeight, graphWidth)
         }
