@@ -6,119 +6,120 @@
  */
 
 class DOMInterface {
-    constructor() {
-        this.loopElement = document.getElementsByTagName("textarea")[0];
-        this.setupElement = document.getElementsByTagName("textarea")[1];
-        this.graphElement = document.getElementById('graph_settings');
-    }
+  constructor () {
+    this.loopElement = document.getElementsByTagName('textarea')[0]
+    this.setupElement = document.getElementsByTagName('textarea')[1]
+    this.graphElement = document.getElementById('graph_settings')
+  }
 
-    /**
+  /**
      * Get the times to run from the DOM
      * @returns the amount of times to run.
      */
-    getRunTimes() {
-        return document.getElementById("max_t_input").value
-    }
+  getRunTimes () {
+    return document.getElementById('max_t_input').value
+  }
 
-    /**
+  /**
      * Get the content from the loop-textarea
      * @returns array of sanatized lines.
      */
-    getLoopContent() {
-        //Get the value from the textarea
-        var lines = this.loopElement.value;
+  getLoopContent () {
+    // Get the value from the textarea
+    var lines = this.loopElement.value
 
-        //Split it on each new line
-        lines = lines.split('\n')
+    // Split it on each new line
+    lines = lines.split('\n')
 
-        // For each line
-        for (let i = 0; i < lines.length; i++) {
-            lines[i] = this.sanitize(lines[i]);
-        }
-
-        //Filter out all the empty lines.
-        var lines = lines.filter(function (element) {
-            return element != "";
-        });
-
-        return lines
+    // For each line
+    for (let i = 0; i < lines.length; i++) {
+      lines[i] = this.sanitize(lines[i])
     }
-    /**
+
+    // Filter out all the empty lines.
+    var lines = lines.filter(function (element) {
+      return element != ''
+    })
+
+    return lines
+  }
+
+  /**
      * This function get the content from the setup-textarea.
      * @returns array of sanatized lines.
      */
-    getSetupContent() {
-        var lines = this.setupElement.value;
-        lines = lines.split('\n')
+  getSetupContent () {
+    var lines = this.setupElement.value
+    lines = lines.split('\n')
 
-        /* Run the `sanitize` function for every line. */
-        for (let i = 0; i < lines.length; i++) {
-            lines[i] = this.sanitize(lines[i]);
-        }
-
-        /* Filter out all the empty lines. */
-        var lines = lines.filter(function (element) {
-            return element != "";
-        });
-
-        return lines
+    /* Run the `sanitize` function for every line. */
+    for (let i = 0; i < lines.length; i++) {
+      lines[i] = this.sanitize(lines[i])
     }
 
-    /**
+    /* Filter out all the empty lines. */
+    var lines = lines.filter(function (element) {
+      return element != ''
+    })
+
+    return lines
+  }
+
+  /**
      * This function removes all unwanted characters from a string of text
      * @param {string} text unsanitized text
      * @returns sanatized text.
      */
-    sanitize(text) {
-        /* Remove spaces. */
-        text = text.replace(/[ ]/g, "")
+  sanitize (text) {
+    /* Remove spaces. */
+    text = text.replace(/[ ]/g, '')
 
-        /* Remove comments. */
-        text = text.split(COMMENT_CHARACTERS)[0]
+    /* Remove comments. */
+    text = text.split(COMMENT_CHARACTERS)[0]
 
-        /* Replace , with . (decimal seperator). */
-        text = text.replace(/[,]/g, ".")
+    /* Replace , with . (decimal seperator). */
+    text = text.replace(/[,]/g, '.')
 
-        return text;
-    }
-    /**
+    return text
+  }
+
+  /**
      * This function add a extra Graph-options-box to the DOM.
      */
-    addGraph() {
-        /* Maximum of 20 code graphs.  */
-        if (this.graphElement.childElementCount <= MAX_GRAPHS) {
-            var new_div = document.createElement('div');
+  addGraph () {
+    /* Maximum of 20 code graphs.  */
+    if (this.graphElement.childElementCount <= MAX_GRAPHS) {
+      var new_div = document.createElement('div')
 
-            var new_input;
-            for (var i = 0; i < 6; i++) {
-                /* Add six value input boxes to the div. */
-                new_input = document.createElement('input');
-                new_input.setAttribute('type', 'text');
-                new_input.setAttribute('value', '');
-                new_input.setAttribute('oninput', 'run()');
-                new_div.appendChild(new_input)
-            }
-            document.getElementById('graph_settings').appendChild(new_div)
-        }
-        else {
-            //TODO remove alert :/
-            alert(`Je kan niet meer dan ${MAX_GRAPHS} grafieken maken.`)
-        }
+      var new_input
+      for (var i = 0; i < 6; i++) {
+        /* Add six value input boxes to the div. */
+        new_input = document.createElement('input')
+        new_input.setAttribute('type', 'text')
+        new_input.setAttribute('value', '')
+        new_input.setAttribute('oninput', 'run()')
+        new_div.appendChild(new_input)
+      }
+      document.getElementById('graph_settings').appendChild(new_div)
+    } else {
+      // TODO remove alert :/
+      alert(`Je kan niet meer dan ${MAX_GRAPHS} grafieken maken.`)
     }
+  }
 
-    /**
+  /**
      * This function add a remove Graph-options-box to the DOM.
      */
-    removeGraph() {
-        /* Make sure to keep at least one graph alive.  */
-        if (this.graphElement.childElementCount > 1) {
-            let lastChild = this.graphElement.childNodes[this.graphElement.childElementCount + 1]
-            this.graphElement.removeChild(lastChild)
-        } else {
-            //TODO remove alert :/
-            alert(`Er moet altijd ten minst één grafiek zijn.`)
-        }
+  removeGraph () {
+    /* Make sure to keep at least one graph alive.  */
+    if (this.graphElement.childElementCount > 1) {
+      const lastChild = this.graphElement.childNodes[this.graphElement.childElementCount + 1]
+      this.graphElement.removeChild(lastChild)
+    } else {
+      // TODO remove alert :/
+      alert('Er moet altijd ten minst één grafiek zijn.')
     }
+  }
 
-    //TODO somthing with the settings.
+  // TODO somthing with the settings.
 }
