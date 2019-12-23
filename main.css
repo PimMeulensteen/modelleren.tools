@@ -20,27 +20,25 @@ footer {
     padding: .5em
 }
 
-.input, .graph, nav {
+.input,
+.graph,
+nav {
     box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.75);
 }
 
 h2 {
     margin: 8px;
 }
+
 .graph {
     border: #a0002a solid;
     margin: 12px;
 }
-.input {
-    width: 600px;
-    height: 400px;
-    border: #a0002a solid;
-    margin: 12px;
 
-}
+
 
 textarea {
-    width: 580px;
+    /* width: 580px; */
     /* padding: 4px; */
     margin: 8px;
     height: 330px;
@@ -49,13 +47,36 @@ textarea {
 #content {
     display: flex;
 }
-#input {
-    flex: 400px;
-  }
-#output{
-    flex: calc(100% - 648px);
-  }
 
-  input{
-      width: 6ch;
-  }
+#input {
+    min-width: 500px;
+    max-width: 648px;
+    flex: 400px;
+}
+
+.input {
+    height: 400px;
+    border: #a0002a solid;
+    margin: 12px;
+}
+
+#output {
+    flex: 100%;
+}
+
+@media (max-width: 1000px) {
+    #content {
+        display: inline;
+    }
+
+    #input {
+        width: 100%;
+        min-width: 0px;
+        max-width: 648px;
+        margin: 0 auto;
+    }
+}
+
+input {
+    width: 6ch;
+}

@@ -1,6 +1,7 @@
 const ignoredCharaters = [' ']
 const commentCharacters = /[';#]/i
 const debug = 1
+const BREAKPOINT = "1000";
 
 const reserved = new Set(['als', 'if', 'einals', 'endif', 'dan', 'then', 'anders', '}', ')', 'stop', 'Math.'])
 

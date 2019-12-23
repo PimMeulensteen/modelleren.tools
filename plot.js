@@ -57,6 +57,7 @@ class Plot {
             modeBarButtonsToRemove: [`sendDataToCloud`]
         })
     }
+
     plot(modelData) {
         //For each graph
         for (let x = 0; x < this.graphs.length; x++) {
@@ -79,9 +80,10 @@ class Plot {
             //Put the graph on the page
             let width_of_window = window.innerWidth;
 
-            let graphWidth = width_of_window > (600 * 2) ? width_of_window - 700 : width_of_window - 7;
-            let graphHeight = width_of_window > (600 * 2000) ? graphWidth / 1.5 : graphWidth / 1.5;
-
+            let graphWidth = width_of_window > (BREAKPOINT) ? width_of_window - 700 : width_of_window - 48;
+            // let graphHeight = width_of_window < (1200) ? graphWidth / 1.5 : graphWidth / 1.5;
+            let graphHeight = graphWidth / 1.5;
+            console.log(graphHeight, graphWidth);
             this.show(x, data, yname, graphHeight, graphWidth)
         }
     }
