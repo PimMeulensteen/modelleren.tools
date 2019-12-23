@@ -9,7 +9,7 @@ class Plot {
      */
   updateGraphs () {
     this.graphs = []
-    this.outputElement.innerHTML = ''; /* Clear the output-element */
+    this.outputElement.innerHTML = '' /* Clear the output-element */
 
     for (let x = 0; x < this.settingsElement.childElementCount; x++) {
       const tempGraph = []

@@ -37,8 +37,8 @@ class DOMInterface {
     }
 
     // Filter out all the empty lines.
-    var lines = lines.filter(function (element) {
-      return element != ''
+    lines = lines.filter(function (element) {
+      return element !== ''
     })
 
     return lines
@@ -58,8 +58,8 @@ class DOMInterface {
     }
 
     /* Filter out all the empty lines. */
-    var lines = lines.filter(function (element) {
-      return element != ''
+    lines = lines.filter(function (element) {
+      return element !== ''
     })
 
     return lines
@@ -89,21 +89,21 @@ class DOMInterface {
   addGraph () {
     /* Maximum of 20 code graphs.  */
     if (this.graphElement.childElementCount <= MAX_GRAPHS) {
-      var new_div = document.createElement('div')
+      var newDiv = document.createElement('div')
 
-      var new_input
+      var newInput
       for (var i = 0; i < 6; i++) {
         /* Add six value input boxes to the div. */
-        new_input = document.createElement('input')
-        new_input.setAttribute('type', 'text')
-        new_input.setAttribute('value', '')
-        new_input.setAttribute('oninput', 'run()')
-        new_div.appendChild(new_input)
+        newInput = document.createElement('input')
+        newInput.setAttribute('type', 'text')
+        newInput.setAttribute('value', '')
+        newInput.setAttribute('oninput', 'run()')
+        newDiv.appendChild(newInput)
       }
-      document.getElementById('graph_settings').appendChild(new_div)
+      document.getElementById('graph_settings').appendChild(newDiv)
     } else {
       // TODO remove alert :/
-      alert(`Je kan niet meer dan ${MAX_GRAPHS} grafieken maken.`)
+      document.alert(`Je kan niet meer dan ${MAX_GRAPHS} grafieken maken.`)
     }
   }
 
@@ -117,7 +117,7 @@ class DOMInterface {
       this.graphElement.removeChild(lastChild)
     } else {
       // TODO remove alert :/
-      alert('Er moet altijd ten minst één grafiek zijn.')
+      document.alert('Er moet altijd ten minst één grafiek zijn.')
     }
   }
 
