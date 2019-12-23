@@ -1,12 +1,12 @@
-model = new Model()
-plot = new Plot()
-ui = new DOMInterface()
+const model = new Model()
+const plot = new Plot()
+const ui = new DOMInterface()
 
 function run () {
   model.setRunTimes(ui.getRunTimes())
 
   model.runSetup(ui.getSetupContent())
-  data = model.runLoop(ui.getLoopContent())
+  const data = model.runLoop(ui.getLoopContent())
   plot.updateGraphs()
   plot.plot(data)
 }

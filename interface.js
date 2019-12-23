@@ -87,7 +87,7 @@ class DOMInterface {
      * This function add a extra Graph-options-box to the DOM.
      */
   addGraph () {
-    /* Maximum of 20 code graphs.  */
+    /* Maximum of 20 code graphs. */
     if (this.graphElement.childElementCount <= MAX_GRAPHS) {
       var newDiv = document.createElement('div')
 
@@ -111,7 +111,7 @@ class DOMInterface {
      * This function add a remove Graph-options-box to the DOM.
      */
   removeGraph () {
-    /* Make sure to keep at least one graph alive.  */
+    /* Make sure to keep at least one graph alive. */
     if (this.graphElement.childElementCount > 1) {
       const lastChild = this.graphElement.childNodes[this.graphElement.childElementCount + 1]
       this.graphElement.removeChild(lastChild)
