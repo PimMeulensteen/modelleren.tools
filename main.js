@@ -2,7 +2,6 @@ model = new Model();
 plot = new Plot();
 ui = new DOMInterface();
 
-run();
 function run() {
     model.setRunTimes(ui.getRunTimes());
 
@@ -19,7 +18,11 @@ window.onkeydown = function (event) {
     }
 }
 
+let resizeTimer;
 window.onresize = function (event) {
-    //If the window is resized, rerun the program.
-    run()
+    /* If the window has  resized, run the program again. */
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+        run()
+    }, 150);
 }

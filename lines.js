@@ -1,3 +1,10 @@
+/**
+ * 2019 by Pim Meulensteen
+ *
+ * This file contains a class to handle the lines in the LOOP-textarea, and
+ * sanatize the lines/change it to executable code.
+ */
+
 class Line {
     constructor(content) {
         this.content = content

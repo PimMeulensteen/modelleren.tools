@@ -1,15 +1,15 @@
 class Plot {
     constructor() {
-        //Get the main element for future reference
         this.outputElement = document.getElementById("output");
         this.settingsElement = document.getElementById('graph_settings');
     }
 
+    /**
+     * Read the graph elements from the DOM and store them in `this.graphs`.
+     */
     updateGraphs() {
-        //Read the graphs from the DOM.
-
         this.graphs = []
-        this.outputElement.innerHTML = "";
+        this.outputElement.innerHTML = ""; /* Clear the output-element */
 
         for (let x = 0; x < this.settingsElement.childElementCount; x++) {
             let temp_graph = []
@@ -32,6 +32,7 @@ class Plot {
             this.outputElement.appendChild(graphElement)
         }
     }
+
     show(x, data, yname, graphHeight, graphWidth) {
 
         let layout = {
@@ -77,13 +78,10 @@ class Plot {
                 yname += this.graphs[x][y] + ', '
             }
 
-            //Put the graph on the page
             let width_of_window = window.innerWidth;
-
             let graphWidth = width_of_window > (BREAKPOINT) ? width_of_window - 700 : width_of_window - 48;
-            // let graphHeight = width_of_window < (1200) ? graphWidth / 1.5 : graphWidth / 1.5;
             let graphHeight = graphWidth / 1.5;
-            console.log(graphHeight, graphWidth);
+
             this.show(x, data, yname, graphHeight, graphWidth)
         }
     }

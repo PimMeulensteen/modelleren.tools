@@ -19,7 +19,6 @@ class Model {
             this.variables[line[0]] = (Number(line[1]));
 
         }
-        console.log(this.variables)
         return true
     }
 
