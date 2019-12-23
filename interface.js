@@ -7,8 +7,8 @@
 
 class DOMInterface {
   constructor () {
-    this.loopElement = document.getElementsByTagName('textarea')[0]
-    this.setupElement = document.getElementsByTagName('textarea')[1]
+    this.loopElement = document.getElementById('loopDiv')
+    this.setupElement = document.getElementById('setupDiv')
     this.graphElement = document.getElementById('graph_settings')
   }
 
@@ -26,11 +26,10 @@ class DOMInterface {
      */
   getLoopContent () {
     // Get the value from the textarea
-    var lines = this.loopElement.value
+    var lines = this.loopElement.innerText
 
     // Split it on each new line
     lines = lines.split('\n')
-
     // For each line
     for (let i = 0; i < lines.length; i++) {
       lines[i] = this.sanitize(lines[i])
@@ -49,7 +48,7 @@ class DOMInterface {
      * @returns array of sanatized lines.
      */
   getSetupContent () {
-    var lines = this.setupElement.value
+    var lines = this.setupElement.innerText
     lines = lines.split('\n')
 
     /* Run the `sanitize` function for every line. */
@@ -73,6 +72,7 @@ class DOMInterface {
   sanitize (text) {
     /* Remove spaces. */
     text = text.replace(/[ ]/g, '')
+    text = text.replace('<br>', '')
 
     /* Remove comments. */
     text = text.split(COMMENT_CHARACTERS)[0]
@@ -83,12 +83,28 @@ class DOMInterface {
     return text
   }
 
+  setButtonTitles () {
+    const aantalGrafiek = this.graphElement.childElementCount
+
+    if (aantalGrafiek === MAX_GRAPHS) {
+      document.getElementById('plus').title = 'Er kunnen maximaal zes grafieken zijn.'
+    } else {
+      document.getElementById('plus').title = 'Voeg een grafiek toe.'
+    }
+
+    if (aantalGrafiek === 1) {
+      document.getElementById('minus').title = 'Er moet ten minste één grafiek zijn.'
+    } else {
+      document.getElementById('minus').title = 'Verwijder een grafiek.'
+    }
+  }
+
   /**
      * This function add a extra Graph-options-box to the DOM.
      */
   addGraph () {
-    /* Maximum of 20 code graphs. */
-    if (this.graphElement.childElementCount <= MAX_GRAPHS) {
+    const aantalGrafiek = this.graphElement.childElementCount
+    if (aantalGrafiek < MAX_GRAPHS) {
       var newDiv = document.createElement('div')
 
       var newInput
@@ -96,15 +112,13 @@ class DOMInterface {
         /* Add six value input boxes to the div. */
         newInput = document.createElement('input')
         newInput.setAttribute('type', 'text')
-        newInput.setAttribute('value', '')
-        newInput.setAttribute('oninput', 'run()')
         newDiv.appendChild(newInput)
       }
       document.getElementById('graph_settings').appendChild(newDiv)
-    } else {
-      // TODO remove alert :/
-      document.alert(`Je kan niet meer dan ${MAX_GRAPHS} grafieken maken.`)
+
+      document.getElementById('aantalGrafieken').innerHTML = aantalGrafiek + 1
     }
+    this.setButtonTitles()
   }
 
   /**
@@ -112,14 +126,21 @@ class DOMInterface {
      */
   removeGraph () {
     /* Make sure to keep at least one graph alive. */
-    if (this.graphElement.childElementCount > 1) {
+    document.getElementById('plus').title = 'Voeg een grafiek toe.'
+    const aantalGrafiek = this.graphElement.childElementCount
+    if (aantalGrafiek > 1) {
       const lastChild = this.graphElement.childNodes[this.graphElement.childElementCount + 1]
       this.graphElement.removeChild(lastChild)
-    } else {
-      // TODO remove alert :/
-      document.alert('Er moet altijd ten minst één grafiek zijn.')
+      document.getElementById('aantalGrafieken').innerHTML = aantalGrafiek - 1
+    } else if (aantalGrafiek === 1) {
+      document.getElementById('plus').title = 'Er moet altijd ten minste één grafiek zijn.'
     }
+
+    this.setButtonTitles()
   }
 
+  formatComments () {
+    return true
+  }
   // TODO somthing with the settings.
 }
