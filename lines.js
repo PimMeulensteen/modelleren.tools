@@ -5,13 +5,13 @@ class Line {
 
     sanitize() {
         //Remove empty lines
-        for (let x = 0; x < ignoredCharaters.length; x++) {
-            this.content = this.content.split(ignoredCharaters[x]).join(' ')
+        for (let x = 0; x < IGNORED_CHARACTERS.length; x++) {
+            this.content = this.content.split(IGNORED_CHARACTERS[x]).join(' ')
         }
 
         //Remove comments
-        for (let x = 0; x < commentCharacters.length; x++) {
-            this.content = this.content.split(commentCharacters[x])[0]
+        for (let x = 0; x < COMMENT_CHARACTERS.length; x++) {
+            this.content = this.content.split(COMMENT_CHARACTERS[x])[0]
         }
         //Replace , with . (decimal seperator)
         this.content = this.content.replace(/[,]/g, ".")
@@ -20,8 +20,8 @@ class Line {
     }
 
     split() {
-        for (let i = 0; i < replacements.length; i++) {
-            this.content = this.content.replace(replacements[i][0], replacements[i][1])
+        for (let i = 0; i < REPLACMENTS.length; i++) {
+            this.content = this.content.replace(REPLACMENTS[i][0], REPLACMENTS[i][1])
         }
 
         //SPLIT
@@ -40,7 +40,7 @@ class Line {
     }
 
     checkExcistence() {
-        if (!reserved.has(this.content[0])) {
+        if (!RESERVED.has(this.content[0])) {
             if (model.variables[this.content[0]] == undefined || this.content[0].length == 0) {
                 model.variables[this.content[0]] = 0
             }

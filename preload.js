@@ -1,12 +1,11 @@
-const ignoredCharaters = [' ']
-const commentCharacters = /[';#]/i
-const debug = 1
+const IGNORED_CHARACTERS = [' ']
+const COMMENT_CHARACTERS = /[';#]/i
+const DEBUG = 0;
 const BREAKPOINT = "1000";
 
-const reserved = new Set(['als', 'if', 'einals', 'endif', 'dan', 'then', 'anders', '}', ')', 'stop', 'Math.'])
+const RESERVED = new Set(['als', 'if', 'einals', 'endif', 'dan', 'then', 'anders', '}', ')', 'stop', 'Math.'])
 
-
-const replacements = [
+const REPLACMENTS = [
     //IF STATEMENTS
     [/eindals|endif/gim, '}'],
     [/if|als/gim, 'if('],

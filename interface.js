@@ -73,7 +73,7 @@ class DOMInterface {
         text = text.replace(/[ ]/g, "")
 
         //Remove comments
-        text = text.split(commentCharacters)[0]
+        text = text.split(COMMENT_CHARACTERS)[0]
 
         //Replace , with . (decimal seperator)
         text = text.replace(/[,]/g, ".")

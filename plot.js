@@ -38,7 +38,7 @@ class Plot {
             title: `(${yname.slice(0, -2)},${this.graphs[x][0]})-grafiek`,
             titlefont: {
                 size: 18,
-                color: `#ccc`
+                color: `#a0002a`
             },
             height: graphHeight,
             width: graphWidth,
