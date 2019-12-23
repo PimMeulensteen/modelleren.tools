@@ -6,11 +6,11 @@
  */
 
 class Line {
-  constructor(content) {
+  constructor (content) {
     this.content = content
   }
 
-  sanitize() {
+  sanitize () {
     // Remove empty lines
     for (let x = 0; x < IGNORED_CHARACTERS.length; x++) {
       this.content = this.content.split(IGNORED_CHARACTERS[x]).join(' ')
@@ -26,7 +26,7 @@ class Line {
     return true
   }
 
-  split() {
+  split () {
     for (let i = 0; i < REPLACMENTS.length; i++) {
       this.content = this.content.replace(REPLACMENTS[i][0], REPLACMENTS[i][1])
     }
@@ -35,7 +35,7 @@ class Line {
     this.content = this.content.split(',')
   }
 
-  finishFormat() {
+  finishFormat () {
     // Join the string back together
     this.content = this.content.join('')
 
@@ -45,7 +45,7 @@ class Line {
     return true
   }
 
-  checkExcistence() {
+  checkExcistence () {
     if (!RESERVED.has(this.content[0])) {
       if (model.variables[this.content[0]] === undefined || this.content[0].length === 0) {
         model.variables[this.content[0]] = 0
@@ -53,7 +53,7 @@ class Line {
     }
   }
 
-  addPrefix() {
+  addPrefix () {
     const prefix = 'this.variables.'
     const variables = model.variables
 

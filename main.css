@@ -85,7 +85,8 @@ h2 {
     }
 }
 
-#loopDiv, #setupDiv {
+#loopDiv,
+#setupDiv {
     font-family: monospace;
     font-size: large;
     box-sizing: border-box;
@@ -98,20 +99,38 @@ h2 {
     height: 330px;
     border-radius: 0;
 }
-.comment{
+
+.comment {
     color: green;
 }
+
 input {
+    width: 3ch;
+    margin: 0;
+    padding: 0;
+}
+#run_button{
+    position: relative;
+    bottom: 0;
+}
+input[type="number"],
+.plusminus {
     width: 6ch;
+    float: right;
+}
+
+#settings {
+    padding: 4px;
+    line-height: 30px;
 }
 
 .plusminus {
-    margin: 5px 0;
+    margin: 5px 2px;
     padding: 0;
     border-radius: 50%;
     border: #333 solid 1px;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     background-color: #ccc;
     transition: 0s;
 }
@@ -119,7 +138,8 @@ input {
 .plusminus:hover {
     background-color: #aaa;
 }
-.plusminus:active{
+
+.plusminus:active {
     background-color: #777;
     transition: .1s;
 }
