@@ -27,9 +27,6 @@
                 <h2>Instellingen</h2>
                 Aantal keer dat <i>loop</i> wordt uitgevoerd: <input type="number" value="100" min="10" step="10"
                     id="max_t_input" max="100000" oninput="max_t.update();run()"><br>
-                Afronden op n-decimalen:
-                <input type="number" value="5" min="0" step="1" id="n_dec_input" max="10"
-                    oninput="decimal_places_interface.update();run()"><br>
                 Aantal grafieken: <span id="aantalGrafieken">1</span>.
                 <button class="plusminus" id="minus" onclick="ui.removeGraph();"
                     title="Er moet ten minste één grafiek zijn.">-</button>
@@ -50,7 +47,7 @@
 
                 </div>
                 <button onclick='run()' title="Maak de grafieken (Ctrl + Enter)" id="run_button">Maak model</button>
-                    
+
             </section>
 
             <!--
