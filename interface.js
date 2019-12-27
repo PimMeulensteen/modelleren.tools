@@ -42,30 +42,7 @@ class DOMInterface {
 
     return lines
   }
-
-  // formatter (text) {
-  //   const lines = text.split('\n')
-  //   for (const i in lines) {
-  //     // const l = lines[i].split(COMMENT_CHARACTERS)
-  //     const j = lines[i].match(COMMENT_CHARACTERS)
-  //     const c = lines[i].split(COMMENT_CHARACTERS)
-  //     if (j && j.length > 0) {
-  //       lines[i] = lines[i].replace(`${j[0]}${c[1]}`, `<span class='comment'> ${j[0]}${c[1]} </span>`)
-  //       console.log(lines[i])
-  //     } else {
-  //       // lines[i] = l[0]
-  //     }
-  //   }
-
-  //   text = lines.join('<br>')
-  //   // console.log(text)
-  //   return text
-  // }
-
-  // formatText () {
-  //   this.setupElement.innerHTML = this.formatter(this.setupElement.innerText)
-  //   this.loopElement.innerHTML = this.formatter(this.loopElement.innerText)
-  // }
+I
 
   /**
      * This function get the content from the setup-textarea.

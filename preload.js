@@ -9,7 +9,7 @@ const COMMENT_CHARACTERS = /[';#]/i
 const DEBUG = 0
 const BREAKPOINT = '1000' /* in pixels. */
 const MAX_GRAPHS = 6
-
+const PREFIX = 'this.variables.'
 const RESERVED = new Set(['als', 'if', 'einals', 'endif', 'dan', 'then', 'anders', '}', ')', 'stop', 'Math.'])
 
 const REPLACMENTS = [
