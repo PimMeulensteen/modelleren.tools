@@ -1,33 +1,40 @@
 class Model {
   constructor () {
-    this.resetState()
+    this.variables = {}
     this.runTimes = 1000
   }
 
+  /**
+   * Setter for the runTimes-variable.
+   * @param {int} n times.
+   */
   setRunTimes (n) {
     this.runTimes = n
   }
 
-  resetState () {
-    this.variables = {}
-  }
-
+  /**
+   * Turn text into variables in this.variables.
+   * @param {string} lines input lines.
+   */
   runSetup (lines) {
-    // For each line
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].split('=')
-      this.variables[line[0]] = (Number(line[1]))
+      this.variables[line[0]] = Number(line[1])
     }
-    return true
   }
 
+  /**
+   * Split the string into seperatre piece.
+   * @param {string} input to split.
+   * @returns {array} the input split into pieces.
+   */
   split (input) {
-    // Replace all the predetirmend operators with their correct JavaScript implementation.
-    for (let i = 0; i < REPLACMENTS.length; i++) {
-      input = input.replace(REPLACMENTS[i][0], REPLACMENTS[i][1])
-    }
+    /* Replace all the predetirmend operators with their correct JavaScript implementation. */
+    REPLACMENTS.forEach(function (replacement) {
+      input = input.replace(replacement[0], replacement[1])
+    })
 
-    // Add comma's to the operators, and thus where to split them
+    /* Add comma's to the operators, and thus where to split them. */
     input = input.replace(/[^A-Za-z0-9 ]/g, ',$&,')
     input = input.split(',')
 
@@ -53,7 +60,8 @@ class Model {
   addPrefix (input) {
     const variables = model.variables
 
-    // If the line contains a variable, add 'this.variables.' in front of it for it to be evaluated correctly
+    /* If the line contains a variable, add 'this.variables.'
+    in front of it for it to be evaluated correctly */
     for (let x = 0; x < input.length; x++) {
       for (const variable in variables) {
         if (variable === input[x] && variable !== '') {
@@ -72,7 +80,6 @@ class Model {
   linesToCode (lines) {
     let result = ''
 
-    // For each line
     for (let i = 0; i < lines.length; i++) {
       let line = this.split(lines[i])
 
@@ -88,24 +95,24 @@ class Model {
 
   runLoop (lines) {
     const history = {}
-    // Change the lines to executable code.
+    /* Change the lines to executable code. */
     const totalCode = this.linesToCode(lines)
 
-    // Copy this.variables to history, but use arrays as values
-    // with the original value as first item
+    /* Copy this.variables to history, but use arrays as values
+    with the original value as first item. */
     for (const n in this.variables) {
       history[n] = [this.variables[n]]
     }
 
-    // Run as many times as determined by the user input
+    /* Run as many times as determined by the user input. */
     for (let x = 0; x < this.runTimes; x++) {
       const stop = false
       eval(totalCode) // Execute the code.
       for (const n in this.variables) {
-        // Make the value a number with maximum of n digits
-        const value = Math.round(Number((this.variables[n])) * 1000) / 1000
+        /* Make the value a number with maximum of n digits */
+        const value = Math.round(Number((this.variables[n])) * (10 ** DECIMALS)) / (10 ** DECIMALS)
 
-        // Add the value of this.variables to history for the corresponding key.
+        /* Add the value of this.variables to history for the corresponding key. */
         history[n].push(value)
       }
       if (stop) break
