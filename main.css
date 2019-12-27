@@ -10,11 +10,7 @@ nav {
     color: white;
     background-color: #a0002a;
     padding: 1em;
-}
-
-h1 {
-    font-weight: normal;
-    font-size: 2em;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.75) !important;
 }
 
 footer {
@@ -40,6 +36,11 @@ a:hover {
 nav,
 footer {
     box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 2em;
 }
 
 h2 {
@@ -89,8 +90,7 @@ h2 {
     }
 }
 
-#loopDiv,
-#setupDiv {
+.editableDiv {
     font-family: monospace;
     font-size: large;
     box-sizing: border-box;

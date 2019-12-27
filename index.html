@@ -18,12 +18,12 @@
         <h1>modelleren.tools</h1>
     </nav>
 
-    <section id="content">
+    <div id="content">
         <!--
         Instellingen
      -->
-        <section id="input">
-            <section class="input" id="settings">
+        <div id="input">
+            <div class="input" id="settings">
                 <h2>Instellingen</h2>
                 Aantal keer dat <i>loop</i> wordt uitgevoerd: <input type="number" value="100" min="10" step="10"
                     id="max_t_input" max="100000" oninput="max_t.update();run()"><br>
@@ -48,14 +48,14 @@
                 </div>
                 <button onclick='run()' title="Maak de grafieken (Ctrl + Enter)" id="run_button">Maak model</button>
 
-            </section>
+            </div>
 
             <!--
         Loop
      -->
-            <section class="input" id="loop">
+            <div class="input" id="loop">
                 <h2>Loop-functie</h2>
-                <div id="loopDiv" oninput="//ui.formatText()    ">
+                <div class="editableDiv" id="loopDiv" oninput="//ui.formatText()    ">
                     #Dit is een regel commentaar.<br>
                     t = t+dt #Dit mag ook ná andere tekst. <br>
                     Fz = m*g <br>
@@ -68,10 +68,10 @@
                     h = h-dh<br>
                     als h &lt; 350 dan C=4,298 eindals<br>
                     als h &lt;=0 dan stop eindals </div>
-            </section> <!-- Setup -->
-            <section class="input">
+            </div> <!-- Setup -->
+            <div class="input">
                 <h2>Setup-functie</h2>
-                <div id="setupDiv" contentEditable="true">
+                <div class="editableDiv" id="setupDiv" contentEditable="true">
                     t =0<br>
                     dt = 0,5<br>
                     m = 71 'Massa<br>
@@ -83,13 +83,13 @@
                     d = 1,20<br>
                     v = 0<br>
                 </div>
-            </section>
-        </section>
+            </div>
+        </div>
         <!--
         Graphs
      -->
-        <section id="output"></section>
-    </section>
+        <div id="output"></div>
+    </div>
 
     <!--
         Footer
