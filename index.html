@@ -5,28 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#a0002a">
     <meta author="Pim Meulensteen">
-    <meta name="description" content="Dit is een webapp voor modelleren: een eindexamenonderdeel
+    <meta name="description" content="Gratis webapp voor modelleren: een eindexamenonderdeel
     van natuurkunde.">
 
     <link rel="stylesheet" href="main.css">
 
-    <title>Modelleren </title>
+    <title>Modelleren</title>
 </head>
 
 <body>
-    <!--
-        Navigation
-     -->
     <nav>
         <h1>modelleren.tools</h1>
     </nav>
 
     <div id="content">
-        <!--
-        Instellingen
-     -->
         <div id="input">
             <div class="input" id="settings">
                 <h2>Instellingen</h2>
@@ -36,8 +31,6 @@
                 <button class="plusminus" id="minus" onclick="ui.removeGraph();"
                     title="Er moet ten minste één grafiek zijn.">-</button>
                 <button class="plusminus" id="plus" onclick="ui.addGraph();" title="Voeg een grafiek toe.">+</button>
-
-
                 <!--
             Graphs
         -->
@@ -51,11 +44,8 @@
                         <input oninput="run()" type="text" value="">
                         <input oninput="run()" type="text" value="">
                     </div>
-
-
                 </div>
                 <button onclick='run()' title="Maak de grafieken (Ctrl + Enter)" id="run_button">Maak model</button>
-
             </div>
 
             <!--
@@ -93,19 +83,12 @@
                 </div>
             </div>
         </div>
-        <!--
-        Graphs
-     -->
         <div id="output"></div>
     </div>
-
-    <!--
-        Footer
-     -->
-    <footer>2019 | Bekijk de code op <a href="https://github.com/PimMeulensteen/modelleren.tools">Github</a> | Grafieken
-        gemaakt met <a href="https://plot.ly/javascript/">plotly.js</a></footer>
-
-
+    <footer>
+        2019 | Bekijk de code op <a href="https://github.com/PimMeulensteen/modelleren.tools">Github</a>
+        | Grafieken gemaakt met <a href="https://plot.ly/javascript/">plotly.js</a>
+    </footer>
     <script src="preload.js"></script>
 
     <script src="model.js"></script>
