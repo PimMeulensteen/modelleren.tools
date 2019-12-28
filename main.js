@@ -3,7 +3,6 @@ const plot = new Plot()
 const ui = new DOMInterface()
 
 function run () {
-  model.setRunTimes(ui.getRunTimes())
   model.runSetup(ui.getSetupContent())
 
   const data = model.runLoop(ui.getLoopContent())

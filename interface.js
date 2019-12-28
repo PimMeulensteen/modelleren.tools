@@ -6,58 +6,54 @@
  */
 
 class DOMInterface {
-  constructor () {
+  constructor() {
     this.loopElement = document.getElementById('loopDiv')
     this.setupElement = document.getElementById('setupDiv')
     this.graphElement = document.getElementById('graph_settings')
-    this.plusElement =document.getElementById('plus')
-    this.minusElement =document.getElementById('minus')
+    this.plusElement = document.getElementById('plus')
+    this.minusElement = document.getElementById('minus')
   }
 
   /**
-     * Get the times to run from the DOM
-     * @returns the amount of times to run.
-     */
-  getRunTimes () {
-    return document.getElementById('max_t_input').value
+   * Reads value from the node and set this as the runTimes in the model.
+   * @param {node} node to read the value from.
+   */
+  setMaxT(node) {
+    model.setRunTimes(node.value)
   }
 
-  setMaxT(elem){
-    model.setRunTimes(elem.value)
-  }
   /**
-     * Get the content from the loop-textarea
+     * Get the content from the loop-textarea.
      * @returns array of sanatized lines.
      */
-  getLoopContent () {
-    // Get the value from the textarea
-    var lines = this.loopElement.innerText
+  getLoopContent() {
+    /* Get the value from the textarea */
+    let lines = this.loopElement.innerText
 
-    // Split it on each new line
+    /* Split it on each new line */
     lines = lines.split('\n')
-    // For each line
-    for (let i = 0; i < lines.length; i++) {
+    for (let i in lines) {
       lines[i] = this.sanitize(lines[i])
     }
 
-    // Filter out all the empty lines.
+    /* Filter out all the empty lines. */
     lines = lines.filter(function (element) {
       return element !== ''
     })
 
     return lines
   }
-I
+  I
 
   /**
      * This function get the content from the setup-textarea.
      * @returns array of sanatized lines.
      */
-  getSetupContent () {
+  getSetupContent() {
     let lines = this.setupElement.innerText.split('\n')
 
     /* Run the `sanitize` function for every line. */
-    for (let i = 0; i < lines.length; i++) {
+    for (let i in lines) {
       lines[i] = this.sanitize(lines[i])
     }
 
@@ -74,7 +70,7 @@ I
      * @param {string} text unsanitized text
      * @returns sanatized text.
      */
-  sanitize (text) {
+  sanitize(text) {
     /* Remove spaces and newlines. */
     text = text.replace(/[ ]|<br>/g, '')
 
@@ -86,12 +82,12 @@ I
 
     return text
   }
-  
+
   /**
    * This function makes sure the buttons to add and remove graphs are displayed
    * correctly.
    */
-  setButtonTitles () {
+  setButtonTitles() {
     const aantalGrafiek = this.graphElement.childElementCount
 
     if (aantalGrafiek === MAX_GRAPHS) {
@@ -114,15 +110,14 @@ I
   /**
      * This function add a extra Graph-options-box to the DOM.
      */
-  addGraph () {
+  addGraph() {
     const aantalGrafiek = this.graphElement.childElementCount
     if (aantalGrafiek < MAX_GRAPHS) {
-      var newDiv = document.createElement('div')
+      let newDiv = document.createElement('div')
 
-      var newInput
-      for (var i = 0; i < 6; i++) {
+      for (let i = 0; i < 6; i++) {
         /* Add six value input boxes to the div. */
-        newInput = document.createElement('input')
+        let newInput = document.createElement('input')
         newInput.setAttribute('type', 'text')
         newDiv.appendChild(newInput)
       }
@@ -136,7 +131,7 @@ I
   /**
      * This function add a remove Graph-options-box to the DOM.
      */
-  removeGraph () {
+  removeGraph() {
     /* Make sure to keep at least one graph alive. */
     document.getElementById('plus').title = 'Voeg een grafiek toe.'
     const aantalGrafiek = this.graphElement.childElementCount
@@ -150,9 +145,4 @@ I
 
     this.setButtonTitles()
   }
-
-  formatComments () {
-    return true
-  }
-  // TODO somthing with the settings.
 }
