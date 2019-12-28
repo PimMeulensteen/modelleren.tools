@@ -12,8 +12,9 @@
     van natuurkunde.">
 
     <link rel="stylesheet" href="main.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>Modelleren</title>
+    <title>Modelleren.tools</title>
 </head>
 
 <body>
@@ -26,14 +27,11 @@
             <div class="input" id="settings">
                 <h2>Instellingen</h2>
                 Aantal keer dat <i>loop</i> wordt uitgevoerd: <input type="number" value="100" min="10" step="10"
-                    id="max_t_input" max="100000" oninput="max_t.update();run()"><br>
+                    id="max_t_input" max="100000" oninput="ui.setMaxT(this)"><br>
                 Aantal grafieken: <span id="aantalGrafieken">1</span>.
                 <button class="plusminus" id="minus" onclick="ui.removeGraph();"
                     title="Er moet ten minste één grafiek zijn.">-</button>
                 <button class="plusminus" id="plus" onclick="ui.addGraph();" title="Voeg een grafiek toe.">+</button>
-                <!--
-            Graphs
-        -->
                 <div id='graph_settings'>
                     x-as | y-as
                     <div>
@@ -42,15 +40,11 @@
                 </div>
                 <button onclick='run()' title="Maak de grafieken (Ctrl + Enter)" id="run_button">Maak model</button>
             </div>
-
-            <!--
-        Loop
-     -->
             <div class="input" id="loop">
                 <h2>Modelregels</h2>
                 <div class="editableDiv" id="loopDiv" contentEditable="true" spellcheck="false">
-                    #Dit is een regel commentaar.<br>
-                    t = t+dt #Dit mag ook ná andere tekst. <br>
+                    'Dit is een regel commentaar.<br>
+                    t = t+dt 'Dit mag ook ná andere tekst. <br>
                     Fz = m*g <br>
                     FL = 0,5*C*d*v^2<br>
                     SF = Fz-FL<br>

@@ -4,15 +4,16 @@ const ui = new DOMInterface()
 
 function run () {
   model.setRunTimes(ui.getRunTimes())
-
   model.runSetup(ui.getSetupContent())
+
   const data = model.runLoop(ui.getLoopContent())
+
   plot.updateGraphs()
   plot.plot(data)
 }
 
 window.onkeydown = function (event) {
-  // If you press crtl+enter, run the model.
+  /* If you press crtl+enter, run the program. */
   if (event.keyCode === 13 && event.ctrlKey) {
     run()
   }
@@ -20,7 +21,7 @@ window.onkeydown = function (event) {
 
 let resizeTimer
 window.onresize = function (event) {
-  /* If the window has  resized, run the program again. */
+  /* If the window has resized, run the program again. */
   clearTimeout(resizeTimer)
   resizeTimer = setTimeout(function () {
     run()

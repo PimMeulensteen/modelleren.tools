@@ -20,6 +20,9 @@ class DOMInterface {
     return document.getElementById('max_t_input').value
   }
 
+  setMaxT(elem){
+    model.setRunTimes(elem.value)
+  }
   /**
      * Get the content from the loop-textarea
      * @returns array of sanatized lines.

@@ -106,7 +106,7 @@ class Model {
 
     /* Run as many times as determined by the user input. */
     for (let x = 0; x < this.runTimes; x++) {
-      const stop = false
+      let stop
       eval(totalCode) // Execute the code.
       for (const n in this.variables) {
         /* Make the value a number with maximum of n digits */

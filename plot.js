@@ -59,11 +59,10 @@ class Plot {
     })
   }
 
-  plot (modelData) {  
+  plot (modelData) {
     for (let x = 0; x < this.graphs.length; x++) {
       const graph = this.graphs[x]
-      /* Temp value to add all the lines within one graph to. */
-      const data = []
+      const data = [] /* Temp value to add all the lines within one graph to. */
       let yname = ''
       /* For each variable minus one (the x variable stays the same). */
       for (let y = 1; y < graph.length; y++) {
@@ -81,6 +80,7 @@ class Plot {
       const windowWidth = window.innerWidth
       const graphWidth = windowWidth > (BREAKPOINT) ? windowWidth - 700 : windowWidth - 48
       const graphHeight = graphWidth / 1.5
+
       if (data && yname) {
         this.show(x, data, yname, graphHeight, graphWidth)
       } else {
