@@ -137,7 +137,8 @@ input[type="number"],
     border: #333 solid 1px;
     width: 32px;
     height: 32px;
-    background-color: #ccc; 
+    background-color: #ccc;
+    cursor: pointer;
 }
 
 .plusminus:hover {
@@ -148,3 +149,14 @@ input[type="number"],
     background-color: #777;
     transition: .1s;
 }
+
+.plusminus:disabled{
+    background-color: #555;
+    color: white;
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+  }
+

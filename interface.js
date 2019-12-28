@@ -10,6 +10,8 @@ class DOMInterface {
     this.loopElement = document.getElementById('loopDiv')
     this.setupElement = document.getElementById('setupDiv')
     this.graphElement = document.getElementById('graph_settings')
+    this.plusElement =document.getElementById('plus')
+    this.minusElement =document.getElementById('minus')
   }
 
   /**
@@ -73,32 +75,39 @@ I
      * @returns sanatized text.
      */
   sanitize (text) {
-    /* Remove spaces. */
-    text = text.replace(/[ ]/g, '')
-    text = text.replace('<br>', '')
+    /* Remove spaces and newlines. */
+    text = text.replace(/[ ]|<br>/g, '')
 
     /* Remove comments. */
     text = text.split(COMMENT_CHARACTERS)[0]
 
-    /* Replace , with . (decimal seperator). */
+    /* Replace `,` with `.` (decimal seperator). */
     text = text.replace(/[,]/g, '.')
 
     return text
   }
-
+  
+  /**
+   * This function makes sure the buttons to add and remove graphs are displayed
+   * correctly.
+   */
   setButtonTitles () {
     const aantalGrafiek = this.graphElement.childElementCount
 
     if (aantalGrafiek === MAX_GRAPHS) {
-      document.getElementById('plus').title = 'Er kunnen maximaal zes grafieken zijn.'
+      this.plusElement.title = 'Er kunnen maximaal zes grafieken zijn.'
+      this.plusElement.disabled = true;
     } else {
-      document.getElementById('plus').title = 'Voeg een grafiek toe.'
+      this.plusElement.title = 'Voeg een grafiek toe.'
+      this.plusElement.disabled = false;
     }
 
     if (aantalGrafiek === 1) {
-      document.getElementById('minus').title = 'Er moet ten minste één grafiek zijn.'
+      this.minusElement.title = 'Er moet ten minste één grafiek zijn.'
+      this.minusElement.disabled = true;
     } else {
-      document.getElementById('minus').title = 'Verwijder een grafiek.'
+      this.minusElement.title = 'Verwijder een grafiek.'
+      this.minusElement.disabled = false;
     }
   }
 
