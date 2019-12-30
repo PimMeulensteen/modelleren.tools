@@ -16,6 +16,28 @@ window.onkeydown = function (event) {
   if (event.keyCode === 13 && event.ctrlKey) {
     run()
   }
+
+  /**
+   * TAB == 4 spaces.
+   * From https://stackoverflow.com/a/32128448/7267641
+   */
+  if (event.keyCode === 9) {
+    if (event.target.classList.contains('editableDiv')) {
+      event.preventDefault()
+
+      const selection = event.target.ownerDocument.defaultView.getSelection()
+      const range = selection.getRangeAt(0)
+      const tabNode = document.createTextNode('    ')
+
+      range.insertNode(tabNode)
+
+      range.setStartAfter(tabNode)
+      range.setEndAfter(tabNode)
+
+      selection.removeAllRanges()
+      selection.addRange(range)
+    }
+  }
 }
 
 let resizeTimer
