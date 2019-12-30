@@ -91,7 +91,7 @@ class DOMInterface {
     const aantalGrafiek = this.graphElement.childElementCount
 
     if (aantalGrafiek === MAX_GRAPHS) {
-      this.plusElement.title = 'Er kunnen maximaal zes grafieken zijn.'
+      this.plusElement.title = `Er kunnen maximaal ${MAX_GRAPHS} grafieken zijn.`
       this.plusElement.disabled = true;
     } else {
       this.plusElement.title = 'Voeg een grafiek toe.'
