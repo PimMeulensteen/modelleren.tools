@@ -65,6 +65,7 @@ h2 {
     height: 400px;
     border: #a0002a solid;
     margin: 12px;
+    position: relative;
 }
 
 #output {
@@ -113,9 +114,23 @@ input {
     padding: 0;
 }
 
+input[type="text"] {
+    border-radius: 1px;
+    width: 5ch;
+    padding: 1px;
+    margin: 1px;
+    height: 3ch;
+    border: black 1px solid;
+}
+
 #run_button {
-    position: relative;
-    bottom: 0;
+    border-radius: 1px;
+    width: auto;
+    height: calc(3ch + 4px);
+    border: black 1px solid;
+    position: absolute;
+    top: 142px;
+    right: 4px;
 }
 
 input[type="number"],
@@ -149,7 +164,7 @@ input[type="number"],
     transition: .1s;
 }
 
-.plusminus:disabled{
+.plusminus:disabled {
     background-color: #555;
     color: white;
     cursor: default;
@@ -157,5 +172,4 @@ input[type="number"],
 
 button::-moz-focus-inner {
     border: 0;
-  }
-
+}
