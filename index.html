@@ -27,13 +27,13 @@
             <div class="input" id="settings">
                 <h2>Instellingen</h2>
                 Aantal keer dat <i>loop</i> wordt uitgevoerd: <input type="number" value="100" min="10" step="10"
-                    id="max_t_input" max="100000" oninput="ui.setMaxT(this)"><br>
+                    id="max_t_input" max="100000" oninput="model.runTimes = this.value"><br>
                 Aantal grafieken: <span id="aantalGrafieken">1</span>.
                 <button class="plusminus" id="minus" onclick="ui.removeGraph();"
                     title="Er moet ten minste één grafiek zijn." disabled>-</button>
                 <button class="plusminus" id="plus" onclick="ui.addGraph();" title="Voeg een grafiek toe.">+</button>
                 <div id='graph_settings'>
-                    x-as | y-as
+                    x-as | y-as 
                     <div>
                         <input oninput="run()" type="text" value="t"><input oninput="run()" type="text" value="h"><input oninput="run()" type="text" value=""><input oninput="run()" type="text" value=""><input oninput="run()" type="text" value=""><input oninput="run()" type="text" value="">
                     </div>

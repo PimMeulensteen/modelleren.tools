@@ -18,8 +18,8 @@ class DOMInterface {
    * Reads value from the node and set this as the runTimes in the model.
    * @param {node} node to read the value from.
    */
-  setMaxT(node) {
-    model.setRunTimes(node.value)
+  set runTimes(node) {
+    model.runTimes = node.value
   }
 
   /**

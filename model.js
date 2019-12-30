@@ -5,14 +5,6 @@ class Model {
   }
 
   /**
-   * Setter for the runTimes-variable.
-   * @param {int} n times.
-   */
-  setRunTimes (n) {
-    this.runTimes = n
-  }
-
-  /**
    * Turn text into variables in this.variables.
    * @param {string} lines input lines.
    */
@@ -74,7 +66,7 @@ class Model {
   }
 
   finishFormat (input) {
-    return 'if(!stop){' + input.join('') + ';}'
+    return input.join('') + ';'
   }
 
   linesToCode (lines) {
