@@ -3,9 +3,9 @@ const plot = new Plot()
 const ui = new DOMInterface()
 
 function run () {
-  model.runSetup(ui.getSetupContent())
+  model.runSetup(ui.setupContent)
 
-  const data = model.runLoop(ui.getLoopContent())
+  const data = model.runLoop(ui.loopContent)
 
   plot.updateGraphs()
   plot.plot(data)
