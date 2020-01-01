@@ -1,0 +1,176 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    box-sizing: border-box;
+}
+
+nav {
+    color: #fff;
+    background-color: #a0002a;
+    padding: 1em;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.75);
+}
+
+footer {
+    color: #ddd;
+    background-color: #a0002a;
+    text-align: center;
+    padding: .5em
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: #daa solid 1px;
+    transition: .3s;
+}
+
+a:hover {
+    border-color: #fff;
+}
+
+.input,
+.graph,
+footer {
+    box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.75);
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 2em;
+}
+
+h2 {
+    margin: 8px;
+}
+
+.graph {
+    border: #a0002a solid;
+    margin: 12px;
+}
+
+#content {
+    display: flex;
+}
+
+#input {
+    min-width: 500px;
+    max-width: 648px;
+    flex: 400px;
+}
+
+.input {
+    height: 400px;
+    border: #a0002a solid;
+    margin: 12px;
+    position: relative;
+}
+
+#output {
+    flex: 100%;
+}
+
+@media (max-width: 1000px) {
+    #content {
+        display: inline;
+    }
+
+    #input {
+        width: 100%;
+        min-width: 0px;
+        max-width: 648px;
+        margin: 0 auto;
+    }
+
+    nav {
+        font-size: 1.5em;
+        padding: .5 em;
+    }
+}
+
+.editableDiv {
+    font-family: monospace;
+    font-size: large;
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+    padding: 4px;
+    margin: 0;
+    border: none;
+    border-top: #000 solid 1px;
+    height: 330px;
+    white-space: pre-wrap;
+    border-radius: 0;
+}
+
+.comment {
+    color: green;
+}
+
+input {
+    width: 3ch;
+    margin: 0;
+    padding: 0;
+}
+
+input[type="text"] {
+    border-radius: 1px;
+    width: 5ch;
+    padding: 1px;
+    margin: 1px;
+    height: 3ch;
+    border: black 1px solid;
+}
+
+#run_button {
+    border-radius: 1px;
+    width: auto;
+    height: calc(3ch + 4px);
+    border: black 1px solid;
+    position: absolute;
+    top: 142px;
+    right: 4px;
+}
+
+input[type="number"],
+.plusminus {
+    width: 6ch;
+    float: right;
+}
+
+#settings {
+    padding: 4px;
+    line-height: 30px;
+}
+
+.plusminus {
+    margin: 5px 2px;
+    padding: 0;
+    border-radius: 50%;
+    border: #333 solid 1px;
+    width: 32px;
+    height: 32px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.plusminus:hover {
+    background-color: #aaa;
+}
+
+.plusminus:active {
+    background-color: #777;
+    transition: .1s;
+}
+
+.plusminus:disabled {
+    background-color: #555;
+    color: white;
+    cursor: default;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
